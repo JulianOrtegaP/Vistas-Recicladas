@@ -15,13 +15,20 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 // ViewHolder: Recibe y configura las propiedades de esa vista
 
 
-class UserAdapter (val users: List<User>): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter (val users: List<User> , private val listener: OnClickListener): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
     private lateinit var context:Context
 
     // onCreate: va a crear una vista
 
+
+
+
+
+
     // Inflar: Mostrar la vista
+
+    // Tirar la vista para mostrar
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         context = parent.context
@@ -31,6 +38,10 @@ class UserAdapter (val users: List<User>): RecyclerView.Adapter<UserAdapter.View
         return  ViewHolder(view)
     }
 
+
+
+
+ // Asignar la informacion
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val user = users.get(position)
@@ -38,28 +49,43 @@ class UserAdapter (val users: List<User>): RecyclerView.Adapter<UserAdapter.View
         with(holder){
 
             binding.tvOrden.text = (position+1).toString()
+
             binding.tvName.text= user.getFullName()
+
             Glide.with(context)
                 .load(user.url)
-                .circleCrop()
                 .centerCrop()
+                .circleCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+
+
                 .into(binding.imgFoto)
 
         }
 
 
+
     }
+
+
 
 
     // getItemCount === va ser la variable "i"
     // Cuantas veces se va a repitir ese ciclo
     override fun getItemCount(): Int = users.size
 
+
+
+
+    // Le estoy pasando las configuraciones de la vista
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
 
         val binding = ItemUserBinding.bind(view)  // Propiedades del item user se crea en binding
 
+        fun setListener(user: User, position: Int){
+            binding.root.setOnClickListener { listener.onClick(user,position) }
+
+        }
 
     }
 
