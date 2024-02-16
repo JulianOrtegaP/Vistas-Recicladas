@@ -2,12 +2,13 @@ package co.edu.upb.ejercicios.vistas_recicladas_sp08_02_2024
 
 data class User(
 
-    var id:Long,
-    var name:String,
-    var lastName:String,
-    var  url: String){
+    var id:Int,
+    var email: String,
+    var first_name:String,
+    var last_name:String,
+    var  avatar: String){
 
-    fun getFullName(): String ="$name $lastName"
+    fun getFullName(): String ="$first_name, $last_name"
 
 
 }

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">vistas_recicladas_SP 08_02_2024</string>
     <string name="imd_desc">imagen usuario</string>
+    <string name="sp_first_time"> </string>
+    <string name="user_name">Ingresa su usuario</string>
+    <string name="helper_user">Obligatorio</string>
+    />
 </resources>
