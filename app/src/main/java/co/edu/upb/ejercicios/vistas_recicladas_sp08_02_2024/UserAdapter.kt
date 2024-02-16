@@ -48,6 +48,8 @@ class UserAdapter (val users: List<User> , private val listener: OnClickListener
 
         with(holder){
 
+            setListener(user, position)
+
             binding.tvOrden.text = (position+1).toString()
 
             binding.tvName.text= user.getFullName()
