@@ -42,6 +42,7 @@ class UserAdapter (val users: List<User> , private val listener: OnClickListener
 
 
  // Asignar la informacion
+ // Adecuar la informacion en nuestra vista reciclada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val user = users.get(position)
